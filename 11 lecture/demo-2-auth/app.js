@@ -3,7 +3,7 @@ import path from 'path';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 import sessions from 'express-session';
-import MsIdExpress from 'microsoft-identity-express'
+import MsIdExpress from 'microsoft-identity-express';
 
 const appSettings = {
     appCredentials: {
@@ -66,7 +66,7 @@ app.get('/signout',
 app.get('/error', (req, res) => res.status(500).send('server error'));
 
 // error
-app.get('/unauthorized', (req, res) => res.status(401).send('Permission denied'));
+app.get('/unauthorized', (req, res) => res.status(401).send('unauthorized'));
 
 
 
