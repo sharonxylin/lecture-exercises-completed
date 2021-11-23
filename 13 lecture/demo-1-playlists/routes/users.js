@@ -68,7 +68,6 @@ router.post('/addBand', async function(req, res, next) {
 
 //add playlist
 router.post('/addPlaylists', async function(req, res, next) {
-  console.log("hererererer");
   let newPlaylist = new Playlist({
     title: req.body.title,
     songs: req.body.songs,
