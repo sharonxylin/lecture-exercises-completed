@@ -34,6 +34,7 @@ async function loadCart(){
 }
 
 function loadPaypal(){
+<<<<<<< HEAD
     alert("TODO: load paypal");
     paypal.Buttons({
     	style: {
@@ -53,4 +54,25 @@ function loadPaypal(){
         	});
       	}
   	}).render('#paypaldiv');
+=======
+    paypal.Buttons({
+        style: {
+          layout: 'vertical',
+          color:  'blue',
+          shape:  'rect',
+          label:  'paypal',
+        },
+        createOrder: function(data, actions) {
+            // Set up the transaction
+            return actions.order.create({
+              purchase_units: [{
+                amount: {
+                  value:  '' + totalCost
+                }
+              }]
+            });
+          }
+      }).render('#paypaldiv');
+
+>>>>>>> ef5dd1cb46b30909dcb73acee2c87cf00e33f4f7
 }
