@@ -41,6 +41,7 @@ router.post('/', async function(req, res, next) {
 // get json data for all users
 router.get('/', async function(req, res, next) {
   let allUsers = await User.find();
+<<<<<<< HEAD
   /*allUsers.map(userInfo => {
     userInfo.id = userInfo._id
     return userInfo;

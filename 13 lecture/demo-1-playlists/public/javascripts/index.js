@@ -3,18 +3,30 @@ async function addUser(){
         document.getElementById("name_input")
         .value;
 
+<<<<<<< HEAD
         await fetch("/users",{
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({name:name})
         })
     console.log("user added");
+=======
+    
+    await fetch("/users", {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({name: name})
+    })
+
+    console.log("added user " + name);
+>>>>>>> 038c98cf5767783c4ebac4d7d6e6f02fe4cb51db
 }
 
 
 async function loadUsers(){
     document.getElementById("allusersdiv").innerHTML = "Loading...";
 
+<<<<<<< HEAD
     //TODO: load users from server
     let response = await fetch("/users");
     let userJson = await response.json();
@@ -33,6 +45,11 @@ async function loadUsers(){
         }
     ]*/
 
+=======
+    //load users from server
+    let response = await fetch("/users");
+    let userJson = await response.json();
+>>>>>>> 038c98cf5767783c4ebac4d7d6e6f02fe4cb51db
 
     //display users
     let usersHTML = userJson.map(userInfo => {
@@ -64,6 +81,7 @@ async function loadUsers(){
 
 async function loadPlaylists(userID){
     
+<<<<<<< HEAD
     //TODO: Load Playlist from server
     let response = await fetch("/users/playlists?userID="+userID);
     let playlists_info = await response.json();
@@ -94,6 +112,12 @@ async function loadPlaylists(userID){
     }
 
 */
+=======
+    //Load Playlist from server
+    let response = await fetch("/users/playlists?userID=" + userID);
+    let playlists_info = await response.json();
+
+>>>>>>> 038c98cf5767783c4ebac4d7d6e6f02fe4cb51db
     let playlistHTML = playlists_info.map(playlistInfo => {
         return `
         <div>
@@ -110,12 +134,23 @@ async function addBand(userID){
     await fetch("users/addBand", {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
+<<<<<<< HEAD
         body: JSON.stringify({userID: userID, band: bandToAdd})
     });
+=======
+        body: JSON.stringify(
+            {
+                userID: userID,
+                band: bandToAdd
+            }
+        )
+    })
+>>>>>>> 038c98cf5767783c4ebac4d7d6e6f02fe4cb51db
     console.log("band added");
 }
 
 async function addPlaylist(userID){
+<<<<<<< HEAD
     let title = document.getElementById("add_playlist_title_text_" + userID);
     let songs = document.getElementById("add_playlist_songs_text_" + userID);
     await fetch("users/addPlaylists", {
@@ -130,6 +165,27 @@ async function addPlaylist(userID){
 async function deleteUser(userID){
     alert("TODO: delete user: "+ userID)
     await fetch("/users",{
+=======
+    let title = document.getElementById("add_playlist_title_text_" + userID).value;
+    let songs = document.getElementById("add_playlist_songs_text_" + userID).value;
+
+    await fetch("users/playlists", {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(
+            {
+                userID: userID,
+                title: title,
+                songs: songs
+            }
+        )
+    })
+   
+}
+
+async function deleteUser(userID){
+    await fetch("/users", {
+>>>>>>> 038c98cf5767783c4ebac4d7d6e6f02fe4cb51db
         method: 'DELETE',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({userID: userID})
